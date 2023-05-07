@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const testCase = document.querySelector('#testCase');
     const testCase2 = document.querySelector('#testCase2')
     testCase.addEventListener('click', () => {
-            testCase.classList.toggle('active')
+            testCase.classList.toggle('active');
             playKick();
     });
     testCase2.addEventListener('click', () => {

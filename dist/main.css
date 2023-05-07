@@ -21,20 +21,22 @@
   vertical-align: top;
   margin-right: 30px;
   margin-top: 10px;
+  animation: bounce 1s;
 }
 
 .cell {
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   background-color: blue;
-  border: 5px solid white;
+  border: 5px solid rgb(0, 0, 0);
   margin-top: 10px;
   margin-right: 10px;
+  animation: bounce 1s;
 }
 
 .cell.active {
-  background-color: #00ff00;
+  background: linear-gradient(to top, #961515, #ef012d);
 }
 
 .sequencer-container {
@@ -43,6 +45,7 @@
   align-items: center;
   height: 100%;
   margin-top: 5px;
+  animation: bounce 1s;
 }
 
 .controls {
@@ -51,15 +54,65 @@
   align-items: center;
   height: 100%;
   margin-top: 5px;
+  animation: bounce 1s;
 }
 
+#play-pause {
+  margin-right: 20px;
+  font-family: "Franklin Gothic Medium";
+  width: 5%;
+  background: linear-gradient(to bottom, #f1990a, #ffc3a0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+#volume {
+  margin-right: 20px;
+  background: linear-gradient(to bottom, #f1990a, #ffc3a0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+#bpm {
+  margin-right: 20px;
+  background: linear-gradient(to bottom, #f1990a, #ffc3a0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .header {
   display: flex;
+  font-family: Georgia, "Times New Roman", Times, serif;
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-top: 150px;
+  margin-top: 75px;
   margin-right: 25px;
+  animation: bounce 1s;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
 }
 
 .footer {
@@ -67,6 +120,31 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-top: 150px;
+  margin-top: 245px;
   margin-right: 25px;
+  animation: bounce 1s;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+#save {
+  margin-right: 20px;
+  background: linear-gradient(to bottom, #f1990a, #ffc3a0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+#social {
+  margin-right: 20px;
+  background: linear-gradient(to bottom, #f1990a, #ffc3a0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
 }
