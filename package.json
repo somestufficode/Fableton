@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-loader": "^9.1.2",
+    "core-js": "^3.30.2",
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.5",
+    "regenerator-runtime": "^0.13.11",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "tone": "^14.7.77",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2"
+  },
+  "name": "fableton",
+  "description": "Hello! This project is a web application that allows users to create their own beats using a sequencer. The sequencer has five different sound components, including a kick, hi-hat, snare, 808, and an oscillator. Users can adjust the volume, tempo, and other parameters to customize their beats. The application also has a pause/play button and the ability to save and share beats with others. The goal of the project is to provide a fun and engaging tool for music enthusiasts to create and share their own beats online.",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

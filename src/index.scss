@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .kick, .snare, .hi-hat, .bass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sequencer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    vertical-align:top;
+    margin-right: 30px;
+    margin-top: 10px;
+  }
+  
+  .cell {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    border: 5px solid white;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  
+  .cell.active {
+    background-color: #00ff00;
+  }
+  
+  .sequencer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5px;
+  }
+
+  .controls {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5px;
+  }
+
+.header {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 150px;
+    margin-right: 25px;
+
+}
+
+.footer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 150px;
+    margin-right: 25px;
+}
+
+
+  
+  
