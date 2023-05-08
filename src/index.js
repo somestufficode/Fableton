@@ -7,7 +7,6 @@ let isClearing = false;
 document.querySelectorAll('.cell').forEach(cell => {
     cell.addEventListener('mousedown', () => {
       isClearing = true;
-      cell.classList.remove('active'); 
     });
   
     cell.addEventListener('mouseup', () => {
@@ -78,5 +77,19 @@ bassCells.forEach((bassCell) => {
       });
     });
 
-// Tone.Transport.start();
-// Tone.Transport.bpm.value = 120;
+  
+//   const playButton = document.querySelector('#play');
+//     playButton.addEventListener('click', () => {
+//     Tone.start().then(() => {
+//         Tone.Transport.start()
+//     });
+
+    // });
+
+//   const pauseButton = document.querySelector('#pause');
+//     pauseButton.addEventListener('click', () => {
+//     Tone.start().then(() => {
+//         Tone.Transport.stop()
+//     });
+
+//     });

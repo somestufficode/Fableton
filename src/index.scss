@@ -90,9 +90,60 @@
     background-color: #eee;
   }
   
-  .cell.active {
-    // background-color: #00ff00;
-    background: linear-gradient(to top,#961515, #ef012d );
+  .kick .cell:nth-child(1).active,
+  .snare .cell:nth-child(1).active,
+  .hi-hat .cell:nth-child(1).active,
+  .bass .cell:nth-child(1).active {
+    background: linear-gradient(to top,#000000, #f03e3e);
+  }
+
+  .kick .cell:nth-child(2).active,
+.snare .cell:nth-child(2).active,
+.hi-hat .cell:nth-child(2).active,
+.bass .cell:nth-child(2).active {
+  background: linear-gradient(to top,#000000, #efca29);
+}
+
+.kick .cell:nth-child(3).active,
+.snare .cell:nth-child(3).active,
+.hi-hat .cell:nth-child(3).active,
+.bass .cell:nth-child(3).active {
+  background: linear-gradient(to top,#000000, #3cb44b);
+}
+
+.kick .cell:nth-child(4).active,
+.snare .cell:nth-child(4).active,
+.hi-hat .cell:nth-child(4).active,
+.bass .cell:nth-child(4).active {
+  background: linear-gradient(to top,#000000, #008cdd);
+}
+
+.kick .cell:nth-child(5).active,
+.snare .cell:nth-child(5).active,
+.hi-hat .cell:nth-child(5).active,
+.bass .cell:nth-child(5).active {
+  background: linear-gradient(to top,#000000, #ff5500);
+}
+
+.kick .cell:nth-child(6).active,
+.snare .cell:nth-child(6).active,
+.hi-hat .cell:nth-child(6).active,
+.bass .cell:nth-child(6).active {
+  background: linear-gradient(to top,#000000, #a53ed5);
+}
+
+  .kick .cell:nth-child(7).active,
+  .snare .cell:nth-child(7).active,
+  .hi-hat .cell:nth-child(7).active,
+  .bass .cell:nth-child(7).active {
+    background: linear-gradient(to top,#000000, #47d1d1);
+  }
+
+  .kick .cell:nth-child(8).active,
+  .snare .cell:nth-child(8).active,
+  .hi-hat .cell:nth-child(8).active,
+  .bass .cell:nth-child(8).active {
+    background: linear-gradient(to top,#000000, #eee);
   }
   
 
@@ -110,7 +161,7 @@
     margin-left: 320px;
   }
   
-  #play-pause {
+  #play {
   background: linear-gradient(to right, #ff0000, #ff8235);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -124,7 +175,26 @@
   font-family: 'Montserrat', sans-serif;
   }
 
-  #play-pause:hover {
+  #pause {
+    background: linear-gradient(to right, #ff0000, #ff8235);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 20px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: 'Montserrat', sans-serif;
+  }
+
+  #play:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  #pause:hover {
     transform: scale(1.1);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   }
@@ -202,53 +272,6 @@
     }
     }
 
-// .header {
-//     display:flex;
-//     font-family: Georgia, 'Times New Roman', Times, serif;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100%;
-//     margin-top: 75px;
-//     margin-right: 25px;
-//     animation: bounce 1s;
-//     border-radius: 8px;
-//     padding: 16px;
-//     font-size: 16px;
-//     color: #333;
-// }
-
-// .footer {
-//     display:flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100%;
-//     animation: bounce 1s;
-//     border-radius: 8px;
-//     padding: 16px;
-//     font-size: 16px;
-//     color: #333;
-// }
-
-// #save { 
-//     margin-right: 20px;
-//     background: linear-gradient(to bottom, #f1990a, #ffc3a0);
-//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//     border-radius: 8px;
-//     padding: 16px;
-//     font-size: 16px;
-//     color: #333;
-// }
-
-// #social {
-//     margin-right: 20px;
-//     background: linear-gradient(to bottom, #f1990a, #ffc3a0);
-//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//     border-radius: 8px;
-//     padding: 16px;
-//     font-size: 16px;
-//     color: #333;
-// }
-
 .header {
   display: flex;
   justify-content: center;
@@ -268,7 +291,7 @@
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
-  animation: bounce 1s;
+  animation: bounce 3s;
   border-radius: 8px;
   padding: 16px;
   font-size: 16px;
