@@ -93,3 +93,68 @@ bassCells.forEach((bassCell) => {
 //     });
 
 //     });
+
+
+let index = 0;
+
+Tone.Transport.bpm.value = 200
+Tone.Transport.scheduleRepeat(repeat, "4n")
+
+play.addEventListener('click', async () => {
+    Tone.Transport.start()
+})
+
+pause.addEventListener('click', async () => {
+    Tone.Transport.stop()
+})
+
+
+
+    function repeat(time) {
+        let step = index % 8;
+        for (let i = 0; i < cells.length; i++) {
+            let cell = cells[i];
+            let tick = i % 8;
+            if (cell.classList.contains('active') && tick === step) {
+                if (cell.parentElement.classList.contains('kick')) {
+                    playKick();
+                } else if (cell.parentElement.classList.contains('snare')) {
+                    playSnare();
+                } else if (cell.parentElement.classList.contains('hi-hat')) {
+                    playHiHat();
+                } else if (cell.parentElement.classList.contains('bass')) {
+                    playBass();
+                }
+            }
+        }
+        index++;
+    }
+
+// const sequencer = document.querySelector('.sequencer');
+// const cells = sequencer.querySelectorAll('.cell');
+
+// for (let i = 0; i < cells.length; i++) {
+//   const columnIndex = i % 8;
+//   const columnCells = sequencer.querySelectorAll(`.cell:nth-child(${columnIndex + 1})`);
+  
+//   for (let j = 0; j < columnCells.length; j++) {
+//     const cell = columnCells[j];
+//     // do something with the cell
+
+//   }
+// }
+
+const sequencer = document.querySelector('.sequencer');
+const rows = sequencer.querySelectorAll('.instrument-row');
+const cells = sequencer.querySelectorAll('.cell');
+
+// Tone.Transport.scheduleRepeat((time) => {
+//   cells.forEach((cell, index) => {
+//     const tick = Tone.Transport.ticks % cells.length;
+//     if (index === tick) {
+//       cell.style.backgroundColor = 'green';
+//     } else {
+//       cell.style.backgroundColor = 'white';
+//     }
+//   });
+// }, '4n');

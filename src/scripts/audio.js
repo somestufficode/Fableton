@@ -25,7 +25,7 @@ export function playKick() {
 export function playSnare() {
     const snareDrum = new Tone.NoiseSynth().toDestination();
       const now = Tone.now();
-      snareDrum.triggerAttackRelease('8n', now);
+      snareDrum.triggerAttackRelease('4n');
 }
 
 export function playHiHat() {
@@ -42,7 +42,7 @@ export function playHiHat() {
     octaves: 1.5
   }).toDestination();
   const now = Tone.now();
-  hiHat.triggerAttackRelease('8n', now);
+  hiHat.triggerAttackRelease('4n', now);
 }
 
 export function playBass() {
@@ -57,7 +57,7 @@ export function playBass() {
       }
     }).toDestination();
     const now = Tone.now();
-    bass.triggerAttackRelease("C1", "8n", now);
+    bass.triggerAttackRelease("C1", "4n", now);
 }
 
 // const snareDrum = new Tone.NoiseSynth().toDestination();
@@ -84,7 +84,7 @@ export function playLoop() {
   
   const synth = new Tone.Synth().toDestination();
   loop = new Tone.Loop(function(time) {
-    synth.triggerAttackRelease("C1", "8n", time);
+    synth.triggerAttackRelease("C1", "4n", time);
   }, "4n");
 
   loop.start(0);
