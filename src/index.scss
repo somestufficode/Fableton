@@ -15,6 +15,8 @@
     display: flex;
     flex-direction: column;
     margin: 25px;
+    animation: bounce 1s;
+
   }
   
   .kick, .snare, .hi-hat, .bass {
@@ -102,33 +104,43 @@
     width: 100%;
     margin-bottom: 50px;
     margin-top: 5px;
-    animation: bounce 1s;
+    animation: bounce 3s;
     max-width: 800px; /* adjust this value to your desired width */
     justify-content: space-between; /* or space-between */
     margin-left: 320px;
   }
   
   #play-pause {
-    font-family:'Franklin Gothic Medium';
-    background: linear-gradient(to right, #ff0000, #ff8235);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    padding: 16px;
-    font-size: 20px;
-    color: #333;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-out;
+  background: linear-gradient(to right, #ff0000, #ff8235);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 20px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: 'Montserrat', sans-serif;
+  }
+
+  #play-pause:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   }
   
   #volume {
     background: linear-gradient(to right, #00be33, #0026ff);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
+    border-radius: 10px;
     padding: 16px;
     font-size: 20px;
-    color: #333;
-    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid black;
   }
   
   #volumerange {
@@ -137,31 +149,47 @@
     border-radius: 8px;
     padding: 16px;
     font-size: 16px;
-    color: #333;
+    color: #ffffff;
+  }
+
+  #volumerange:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   }
   
   #bpm {
     background: linear-gradient(to right, #ff8235, #ffee00);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 16px;
     font-size: 20px;
-    color: #333;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat', sans-serif;
   }
   
   #bpmvalue {
     background: linear-gradient(to right, #ffee00, #00be33);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 16px;
     font-size: 20px;
-    color: #333;
+    color: #ffffff;
     cursor: pointer;
+    transition: transform 0.2s ease-out;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat', sans-serif;
   }
   
+  #bpmvalue:hover {
+    transform: scale(2.0);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  }
 
 
-  
   @keyframes bounce {
     0% {
       transform: translateY(0);
@@ -233,13 +261,11 @@
   padding: 16px;
   font-size: 16px;
   color: #fff;
-  background-color: #000;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 100%;
   animation: bounce 1s;
@@ -247,8 +273,6 @@
   padding: 16px;
   font-size: 16px;
   color: #fff;
-  background-color: #000;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 #save,
@@ -263,6 +287,7 @@
 }
 
 
+
 #save:hover, #social:hover {
   transform: scale(1.1);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
@@ -270,7 +295,9 @@
 
 body {
   margin: 0 auto; /* this centers the content within the max-width */
-  background-color: #050505;
+  background-color: #000000;
 }
   
-  
+.instrument-name {
+  color: #fff;
+}

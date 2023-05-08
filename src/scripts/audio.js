@@ -10,7 +10,7 @@
 //     synth.triggerRelease(now + 1)
 // }
 
-import * as Tone from "tone";
+import * as Tone from "tone"; 
 
 export function playKick() {
   const kick = new Tone.Synth().toDestination();
@@ -43,10 +43,9 @@ export function playSnare() {
     //     });
     // };
 
-let loop; // declare the loop variable outside the function
+let loop; 
 
 export function playLoop() {
-  // check if the loop is already playing, if it is, stop it
   if (loop && loop.state === 'started') {
     loop.stop();
     loop = null;
@@ -65,7 +64,8 @@ export function playLoop() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const testCase = document.querySelector('#testCase');
-    const testCase2 = document.querySelector('#testCase2')
+    const testCase2 = document.querySelector('#testCase2');
+    const testCase3 = document.querySelector('#testCase3');
     testCase.addEventListener('click', () => {
             testCase.classList.toggle('active');
             playKick();
@@ -73,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
     testCase2.addEventListener('click', () => {
             testCase2.classList.toggle('active');
             playLoop();
-    })
+    });
+    testCase3.addEventListener('click', () => {
+            testCase3.classList.toggle('active');
+            playSnare();
+    });
   });
 
 
