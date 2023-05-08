@@ -25,10 +25,40 @@ export function playKick() {
 export function playSnare() {
     const snareDrum = new Tone.NoiseSynth().toDestination();
       const now = Tone.now();
-      // set the loop property to true and duration to '8n'
       snareDrum.triggerAttackRelease('8n', now);
 }
 
+export function playHiHat() {
+  const hiHat = new Tone.MetalSynth({
+    frequency: 2000,
+    envelope: {
+      attack: 0.001,
+      decay: 0.1,
+      release: 0.5
+    },
+    harmonicity: 5.1,
+    resonance: 400,
+    modulationIndex: 32,
+    octaves: 1.5
+  }).toDestination();
+  const now = Tone.now();
+  hiHat.triggerAttackRelease('8n', now);
+}
+
+export function playBass() {
+    const bass = new Tone.MembraneSynth({
+      pitchDecay: 0.008,
+      octaves: 2,
+      envelope: {
+        attack: 0.001,
+        decay: 0.5,
+        sustain: 0.1,
+        release: 1
+      }
+    }).toDestination();
+    const now = Tone.now();
+    bass.triggerAttackRelease("C1", "8n", now);
+}
 
 // const snareDrum = new Tone.NoiseSynth().toDestination();
 //   const now = Tone.now();
@@ -62,22 +92,22 @@ export function playLoop() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const testCase = document.querySelector('#testCase');
-    const testCase2 = document.querySelector('#testCase2');
-    const testCase3 = document.querySelector('#testCase3');
-    testCase.addEventListener('click', () => {
-            testCase.classList.toggle('active');
-            playKick();
-    });
-    testCase2.addEventListener('click', () => {
-            testCase2.classList.toggle('active');
-            playLoop();
-    });
-    testCase3.addEventListener('click', () => {
-            testCase3.classList.toggle('active');
-            playSnare();
-    });
-  });
+// document.addEventListener('DOMContentLoaded', () => {
+//     const testCase = document.querySelector('#testCase');
+//     const testCase2 = document.querySelector('#testCase2');
+//     const testCase3 = document.querySelector('#testCase3');
+//     testCase.addEventListener('click', () => {
+//             testCase.classList.toggle('active');
+//             playKick();
+//     });
+//     testCase2.addEventListener('click', () => {
+//             testCase2.classList.toggle('active');
+//             playLoop();
+//     });
+//     testCase3.addEventListener('click', () => {
+//             testCase3.classList.toggle('active');
+//             playSnare();
+//     });
+//   });
 
 
