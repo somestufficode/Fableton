@@ -55,7 +55,7 @@ export function playLoop() {
   
   const synth = new Tone.Synth().toDestination();
   loop = new Tone.Loop(function(time) {
-    synth.triggerAttackRelease("C4", "8n", time);
+    synth.triggerAttackRelease("C1", "8n", time);
   }, "4n");
 
   loop.start(0);
