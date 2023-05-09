@@ -77,28 +77,10 @@ bassCells.forEach((bassCell) => {
       });
     });
 
-  
-//   const playButton = document.querySelector('#play');
-//     playButton.addEventListener('click', () => {
-//     Tone.start().then(() => {
-//         Tone.Transport.start()
-//     });
-
-    // });
-
-//   const pauseButton = document.querySelector('#pause');
-//     pauseButton.addEventListener('click', () => {
-//     Tone.start().then(() => {
-//         Tone.Transport.stop()
-//     });
-
-//     });
-
-
 let index = 0;
 
-Tone.Transport.bpm.value = 200
-Tone.Transport.scheduleRepeat(repeat, "4n")
+Tone.Transport.bpm.value = 120
+Tone.Transport.scheduleRepeat(repeat, "8n")
 
 play.addEventListener('click', async () => {
     Tone.Transport.start()
@@ -107,8 +89,6 @@ play.addEventListener('click', async () => {
 pause.addEventListener('click', async () => {
     Tone.Transport.stop()
 })
-
-
 
     function repeat(time) {
         let step = index % 8;
@@ -130,25 +110,11 @@ pause.addEventListener('click', async () => {
         index++;
     }
 
-// const sequencer = document.querySelector('.sequencer');
-// const cells = sequencer.querySelectorAll('.cell');
-
-// for (let i = 0; i < cells.length; i++) {
-//   const columnIndex = i % 8;
-//   const columnCells = sequencer.querySelectorAll(`.cell:nth-child(${columnIndex + 1})`);
-  
-//   for (let j = 0; j < columnCells.length; j++) {
-//     const cell = columnCells[j];
-//     // do something with the cell
-
-//   }
-// }
-
 const sequencer = document.querySelector('.sequencer');
-const rows = sequencer.querySelectorAll('.instrument-row');
+// const rows = sequencer.querySelectorAll('.instrument-row');
 const cells = sequencer.querySelectorAll('.cell');
 
-// Tone.Transport.scheduleRepeat((time) => {
+// Tone.Transport.scheduleRepeat((time) => { 
 //   cells.forEach((cell, index) => {
 //     const tick = Tone.Transport.ticks % cells.length;
 //     if (index === tick) {
@@ -158,3 +124,115 @@ const cells = sequencer.querySelectorAll('.cell');
 //     }
 //   });
 // }, '4n');
+
+// const kickSampler = new Tone.Sampler({
+//     urls: {
+//       C1: "/Users/kinkatse/Desktop/FabeltonV2/Fableton/fireKick.wav"
+//     },
+//     onload: () => {
+//       console.log("kick sample loaded");
+//     }
+//   }).toDestination();
+  
+//   document.querySelector("#sample").addEventListener("click", () => {
+//     kickSampler.triggerAttackRelease("C1", "8n");
+//   });
+let isRainbowApplied = false;
+
+function applyRainbow() {
+    if (!isRainbowApplied) {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => {
+        cell.classList.add('rainbow');
+      });
+    } else {
+        resetColors();
+    }
+  }
+  setInterval(applyRainbow, 2000); // Change colors every 2 seconds
+
+  let idleTimer = null;
+  let isIdle = true;
+  
+  // Function to change the colors of the sequencer cells
+  function changeCellColors() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+      // Change the cell color to a random color
+      cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    });
+  }
+  
+  // Start the idle timer when the page is loaded
+  window.addEventListener('load', () => {
+    idleTimer = setInterval(() => {
+      // Check if the application is idle
+      if (isIdle) {
+        changeCellColors();
+      }
+    }, 1000); // Change the colors every 1 second
+  });
+
+  function resetColors() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+      cell.style.backgroundColor = '';
+    });
+  }
+
+document.addEventListener('click', () => {
+    // Reset the idle timer when the user interacts with the application
+    console.log('User has clicked on the page');
+    isIdle = false;
+    isRainbowApplied = true;
+    idleTimer = null;
+    resetColors();
+
+  });
+
+kickCells.forEach(cell => {
+    cell.addEventListener('click', () => {
+      // Remove the letters from the cells
+      kickCells[0].textContent = '';
+      kickCells[1].textContent = '';
+      kickCells[2].textContent = '';
+      kickCells[3].textContent = '';
+    });
+  });
+
+
+snareCells.forEach(cell => {
+    cell.addEventListener('click', () => {
+      // Remove the letters from the cells
+      snareCells[3].textContent = '';
+      snareCells[4].textContent = '';
+      snareCells[5].textContent = '';
+      snareCells[6].textContent = '';
+      snareCells[7].textContent = '';
+    });
+  });
+
+
+  hiHatCells.forEach(cell => {
+    cell.addEventListener('click', () => {
+      // Remove the letters from the cells
+      hiHatCells[0].textContent = '';
+      hiHatCells[1].textContent = '';
+      hiHatCells[2].textContent = '';
+      hiHatCells[3].textContent = '';
+      hiHatCells[4].textContent = '';
+    });
+  });
+
+bassCells.forEach(cell => {
+    cell.addEventListener('click', () => {
+      // Remove the letters from the cells
+      bassCells[4].textContent = '';
+      bassCells[5].textContent = '';
+      bassCells[6].textContent = '';
+      bassCells[7].textContent = '';
+    });
+  });
+
+
+

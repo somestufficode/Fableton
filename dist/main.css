@@ -30,7 +30,7 @@
 .cell {
   width: 100px;
   height: 100px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
   margin-right: 5px;
   cursor: pointer;
@@ -41,6 +41,7 @@
 .hi-hat .cell:nth-child(1),
 .bass .cell:nth-child(1) {
   background-color: #f03e3e;
+  border-left-color: white;
 }
 
 .kick .cell:nth-child(2),
@@ -62,6 +63,7 @@
 .hi-hat .cell:nth-child(4),
 .bass .cell:nth-child(4) {
   background-color: #008cdd;
+  border-right-color: rgb(0, 0, 0);
 }
 
 .kick .cell:nth-child(5),
@@ -69,6 +71,7 @@
 .hi-hat .cell:nth-child(5),
 .bass .cell:nth-child(5) {
   background-color: #ff5500;
+  border-left-color: rgb(0, 0, 0);
 }
 
 .kick .cell:nth-child(6),
@@ -90,6 +93,7 @@
 .hi-hat .cell:nth-child(8),
 .bass .cell:nth-child(8) {
   background-color: #eee;
+  border-right-color: gray;
 }
 
 .kick .cell:nth-child(1).active,
@@ -320,4 +324,39 @@ body {
 
 .instrument-name {
   color: #fff;
+}
+
+.rainbow {
+  animation: rainbow 2s infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: red;
+  }
+  16% {
+    background-color: orange;
+  }
+  33% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: green;
+  }
+  67% {
+    background-color: blue;
+  }
+  84% {
+    background-color: indigo;
+  }
+  100% {
+    background-color: violet;
+  }
+}
+#letter {
+  font-size: 100px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  animation: bounce 5s;
 }
