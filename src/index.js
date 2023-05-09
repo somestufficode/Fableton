@@ -31,6 +31,10 @@ import { playBass } from './scripts/audio.js';
 
 import { playHiHat }  from './scripts/audio.js';
 
+import { inputBPM } from './scripts/setters.js'
+
+// import { changeNumberOfBars } from './scripts/changeBars.js';
+
 import * as Tone from "tone";
 
 
@@ -77,21 +81,44 @@ bassCells.forEach((bassCell) => {
       });
     });
 
+// inputBPM()
+// Tone.Transport.scheduleRepeat(repeat, "8n")
+
+// Tone.Transport.start();
 let index = 0;
+let currentBPM = 120;
 
-Tone.Transport.bpm.value = 120
-Tone.Transport.scheduleRepeat(repeat, "8n")
+Tone.Transport.scheduleRepeat(repeat, "8n");
 
-play.addEventListener('click', async () => {
+const bpmInput = document.querySelector('#bpmvalue');
+bpmInput.addEventListener('input', () => {
+  const bpmValue = parseInt(bpmInput.value, 10);
+  Tone.Transport.bpm.value = bpmValue;
+  currentBPM = bpmValue;
+});
+
+play.addEventListener('click', () => {
     Tone.Transport.start()
 })
 
-pause.addEventListener('click', async () => {
+pause.addEventListener('click', () => {
     Tone.Transport.stop()
 })
 
+// function highlightCells(cells, step) {
+//     for (let i = 0; i < cells.length; i++) {
+//       let cell = cells[i];
+//       if (cell.getAttribute('name') === step) {
+//         cell.style.backgroundColor = '';
+//       } else {
+//         cell.style.backgroundColor = '';
+//       }
+//     }
+//   }
+
     function repeat(time) {
         let step = index % 8;
+        // highlightCells(cells, step);
         for (let i = 0; i < cells.length; i++) {
             let cell = cells[i];
             let tick = i % 8;
@@ -108,6 +135,7 @@ pause.addEventListener('click', async () => {
             }
         }
         index++;
+        Tone.Transport.bpm.value = currentBPM;
     }
 
 const sequencer = document.querySelector('.sequencer');
@@ -235,4 +263,28 @@ bassCells.forEach(cell => {
   });
 
 
+
+// Select the sequencer container and the bars
+const sequencerContainer = document.querySelector('.sequencer-container');
+const bars = document.querySelectorAll('.instrument-row');
+
+// Function to change the number of bars in the sequencer
+function changeNumberOfBars(numBars) {
+  // Remove all existing bars
+  bars.forEach(bar => sequencerContainer.removeChild(bar));
+
+  // Add the new number of bars
+  for (let i = 0; i < numBars; i++) {
+    const bar = document.createElement('div');
+    bar.classList.add('bar');
+    sequencerContainer.appendChild(bar);
+  }
+}
+
+// Get the select element and add an event listener to it
+const select = document.querySelector('select');
+select.addEventListener('change', (event) => {
+  const numBars = parseInt(event.target.value);
+  changeNumberOfBars(numBars);
+});
 

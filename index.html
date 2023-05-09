@@ -26,7 +26,11 @@
             <label id="volume" for="volume">Volume:</label>
             <input type="range" id="volumerange" min="0" max="1" step="0.01" value="0.5">
         </div>
-
+        <label for="bars">Select number of bars:</label>
+            <select id="bars" onchange="changeNumberOfBars()">
+            <option value="4">4 Bars</option>
+            <option value="8">8 Bars</option>
+            </select>
     </header>
 
     <main>
@@ -37,53 +41,53 @@
 
                 <div class="instrument-row">
                     <div id="kick" class="kick">
-                        <div id="letter" class="cell">K</div>
-                        <div id="letter" class="cell">I</div>
-                        <div id="letter" class="cell">C</div>
-                        <div id="letter" class="cell">K</div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
+                        <div name="0" id="letter" class="cell">K</div>
+                        <div name="1" id="letter" class="cell">I</div>
+                        <div name="2" id="letter" class="cell">C</div>
+                        <div name="3" id="letter" class="cell">K</div>
+                        <div name="4" class="cell"></div>
+                        <div name="5" class="cell"></div>
+                        <div name="6" class="cell"></div>
+                        <div name="7" class="cell"></div>
                     </div>
                 </div>
                
                 <div class="instrument-row">
                     <div class="snare">
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div id="letter" class="cell">S</div>
-                        <div id="letter" class="cell">N</div>
-                        <div id="letter" class="cell">A</div>
-                        <div id="letter" class="cell">R</div>
-                        <div id="letter" class="cell">E</div>
+                        <div name="0" class="cell"></div>
+                        <div name="1" class="cell"></div>
+                        <div name="2" class="cell"></div>
+                        <div name="3" id="letter" class="cell">S</div>
+                        <div name="4" id="letter" class="cell">N</div>
+                        <div name="5" id="letter" class="cell">A</div>
+                        <div name="6" id="letter" class="cell">R</div>
+                        <div name="7" id="letter" class="cell">E</div>
                     </div>
                 </div>
 
                 <div class="instrument-row">
                     <div class="hi-hat">
-                        <div id="letter" class="cell">H</div>
-                        <div id="letter" class="cell">I</div>
-                        <div id="letter" class="cell">H</div>
-                        <div id="letter" class="cell">A</div>
-                        <div id="letter" class="cell">T</div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
+                        <div name="0" id="letter" class="cell">H</div>
+                        <div name="1" id="letter" class="cell">I</div>
+                        <div name="2" id="letter" class="cell">H</div>
+                        <div name="3" id="letter" class="cell">A</div>
+                        <div name="4" id="letter" class="cell">T</div>
+                        <div name="5" class="cell"></div>
+                        <div name="6" class="cell"></div>
+                        <div name="7" class="cell"></div>
                     </div>
                 </div>
 
                 <div class="instrument-row">
                     <div class="bass">
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                        <div id="letter" class="cell">B</div>
-                        <div id="letter" class="cell">A</div>
-                        <div id="letter" class="cell">S</div>
-                        <div id="letter" class="cell">S</div>
+                        <div name="0" class="cell"></div>
+                        <div name="1" class="cell"></div>
+                        <div name="2" class="cell"></div>
+                        <div name="3" class="cell"></div>
+                        <div name="4" id="letter" class="cell">B</div>
+                        <div name="5" id="letter" class="cell">A</div>
+                        <div name="6" id="letter" class="cell">S</div>
+                        <div name="7" id="letter" class="cell">S</div>
                     </div>
                 </div>
 
