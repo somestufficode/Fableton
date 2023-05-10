@@ -159,67 +159,85 @@
   height: 100%;
   width: 100%;
   margin-bottom: 50px;
-  margin-top: 5px;
+  margin-top: 80px;
   animation: bounce 3s;
   max-width: 800px; /* adjust this value to your desired width */
   justify-content: space-between; /* or space-between */
-  margin-left: 320px;
+  margin-left: 290px;
 }
 
 #play {
-  background: linear-gradient(to right, #ff0000, #ff8235);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 16px;
-  font-size: 20px;
-  color: #ffffff;
+  display: inline;
   border: none;
+  background-color: transparent;
   cursor: pointer;
   transition: transform 0.2s ease-out;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  font-family: "Montserrat", sans-serif;
+}
+
+#play-img {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+}
+
+#pause-img {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  filter: contrast(100%);
+  margin-left: -60px;
 }
 
 #pause {
-  background: linear-gradient(to right, #ff0000, #ff8235);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 16px;
-  font-size: 20px;
-  color: #ffffff;
+  margin-left: 55px;
+  display: inline;
   border: none;
+  background-color: transparent;
   cursor: pointer;
   transition: transform 0.2s ease-out;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  font-family: "Montserrat", sans-serif;
 }
 
 #play:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  transform: scale(1.3);
 }
 
 #pause:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  transform: scale(1.3);
 }
 
 #volume {
-  background: linear-gradient(to right, #00be33, #0026ff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 16px;
   font-size: 20px;
   color: #ffffff;
-  cursor: pointer;
   transition: transform 0.2s ease-out;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   font-family: "Montserrat", sans-serif;
   border: 1px solid black;
+  margin-right: -10px;
+  margin-left: -5px;
 }
 
-#volumerange {
-  background: linear-gradient(to right, #0026ff, #9500ff);
+#mute {
+  display: inline;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  margin-right: -20px;
+}
+
+#mute-img {
+  width: 75px;
+  height: 75px;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+}
+
+#volumeinput {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 16px;
@@ -227,32 +245,36 @@
   color: #ffffff;
 }
 
-#volumerange:hover {
+#volumeinput:hover {
   transform: scale(1.1);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+#mute:hover {
+  transform: scale(1.3);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
 #bpm {
-  background: linear-gradient(to right, #ff8235, #ffee00);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 16px;
   font-size: 20px;
   color: #ffffff;
   border: none;
-  cursor: pointer;
   transition: transform 0.2s ease-out;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   font-family: "Montserrat", sans-serif;
+  margin-left: 15px;
+  margin-right: -15px;
 }
 
 #bpmvalue {
-  background: linear-gradient(to right, #ffee00, #00be33);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 16px;
   font-size: 20px;
-  color: #ffffff;
+  margin-left: 10px;
   cursor: pointer;
   transition: transform 0.2s ease-out;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
@@ -275,18 +297,29 @@
     transform: translateY(0);
   }
 }
-.header {
+#header {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
-  margin-top: 20px;
-  margin-right: 25px;
-  animation: bounce 1s;
   border-radius: 8px;
   padding: 16px;
   font-size: 16px;
   color: #fff;
+  margin-bottom: 20px;
+}
+
+#logo {
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#logo:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .footer {
@@ -356,6 +389,7 @@ body {
 #letter {
   font-size: 100px;
   font-weight: bold;
+  font-style: monaco;
   color: rgb(0, 0, 0);
   text-align: center;
   animation: bounce 5s;

@@ -88,8 +88,8 @@ bassCells.forEach((bassCell) => {
 let index = 0;
 let currentBPM = 120;
 
-Tone.Transport.scheduleRepeat(repeat, "8n");
-
+Tone.Transport.scheduleRepeat(repeat, "4n");
+// BPM Change
 const bpmInput = document.querySelector('#bpmvalue');
 bpmInput.addEventListener('input', () => {
   const bpmValue = parseInt(bpmInput.value, 10);
@@ -97,13 +97,54 @@ bpmInput.addEventListener('input', () => {
   currentBPM = bpmValue;
 });
 
-play.addEventListener('click', () => {
-    Tone.Transport.start()
+// Volume Change
+
+// const gainNode = new Tone.Gain(0.5);
+// const volumeInput = document.querySelector('#volumeinput');
+// gainNode.gain.value = volumeInput.value;
+// gainNode.toDestination();
+
+// volumeInput.addEventListener('input', () => {
+//   const volumeValue = parseFloat(volumeInput.value);
+//   gainNode.gain.value = volumeValue;
+// });
+
+// VOLUME
+
+Tone.Destination.volume.value = 100;
+
+// adjust volume with a slider input
+const volumeInput = document.querySelector('#volumeinput');
+volumeInput.addEventListener('input', () => {
+  const volumeValue = parseFloat(volumeInput.value);
+  Tone.Destination.volume.value = volumeValue;
+});
+
+// MUTE 
+
+mute.addEventListener('click', () => {
+    Tone.Destination.mute = true;
 })
 
-pause.addEventListener('click', () => {
-    Tone.Transport.stop()
+// Play 
+play.addEventListener('click', () => {
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].textContent = '';
+    }
+    Tone.Transport.start();
+    // console.log(Tone.Transport.position);
 })
+
+// Pause
+pause.addEventListener('click', () => {
+    Tone.Transport.pause();
+    // console.log(Tone.Transport.position);
+})
+
+// stopSeq.addEventListener('click', () => {
+//     Tone.Transport.stop();
+//     console.log(Tone.Transport.position);
+// })
 
 // function highlightCells(cells, step) {
 //     for (let i = 0; i < cells.length; i++) {
@@ -116,12 +157,27 @@ pause.addEventListener('click', () => {
 //     }
 //   }
 
+// const cell = document.querySelector('td');
+
+// Get the name attribute value
+// const nameValue = cell.getAttribute('name');
+
+// Sequence Function
     function repeat(time) {
         let step = index % 8;
         // highlightCells(cells, step);
         for (let i = 0; i < cells.length; i++) {
             let cell = cells[i];
             let tick = i % 8;
+            let nameValue = cell.getAttribute('name');
+            if (nameValue == step) {
+                    // cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    cell.style.backgroundColor = 'black';
+                    cell.classList.add('current-column');
+            } else { 
+                cell.style.backgroundColor = '';
+                cell.classList.remove('current-column');
+            }
             if (cell.classList.contains('active') && tick === step) {
                 if (cell.parentElement.classList.contains('kick')) {
                     playKick();
@@ -133,6 +189,7 @@ pause.addEventListener('click', () => {
                     playBass();
                 }
             }
+           
         }
         index++;
         Tone.Transport.bpm.value = currentBPM;
@@ -165,6 +222,11 @@ const cells = sequencer.querySelectorAll('.cell');
 //   document.querySelector("#sample").addEventListener("click", () => {
 //     kickSampler.triggerAttackRelease("C1", "8n");
 //   });
+
+
+
+// Rainbow CSS
+
 let isRainbowApplied = false;
 
 function applyRainbow() {
@@ -205,6 +267,7 @@ function applyRainbow() {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
       cell.style.backgroundColor = '';
+      cell.classList.remove('rainbow');
     });
   }
 
@@ -264,27 +327,46 @@ bassCells.forEach(cell => {
 
 
 
-// Select the sequencer container and the bars
-const sequencerContainer = document.querySelector('.sequencer-container');
-const bars = document.querySelectorAll('.instrument-row');
+// // Select the sequencer container and the bars
+// const sequencerContainer = document.querySelector('.sequencer-container');
+// const bars = document.querySelectorAll('.instrument-row');
 
-// Function to change the number of bars in the sequencer
-function changeNumberOfBars(numBars) {
-  // Remove all existing bars
-  bars.forEach(bar => sequencerContainer.removeChild(bar));
+// // Function to change the number of bars in the sequencer
+// function changeNumberOfBars(numBars) {
+//   // Remove all existing bars
+//   bars.forEach(bar => sequencerContainer.removeChild(bar));
 
-  // Add the new number of bars
-  for (let i = 0; i < numBars; i++) {
-    const bar = document.createElement('div');
-    bar.classList.add('bar');
-    sequencerContainer.appendChild(bar);
-  }
-}
+//   // Add the new number of bars
+//   for (let i = 0; i < numBars; i++) {
+//     const bar = document.createElement('div');
+//     bar.classList.add('bar');
+//     sequencerContainer.appendChild(bar);
+//   }
+// }
 
-// Get the select element and add an event listener to it
-const select = document.querySelector('select');
-select.addEventListener('change', (event) => {
-  const numBars = parseInt(event.target.value);
-  changeNumberOfBars(numBars);
-});
+// // Get the select element and add an event listener to it
+// const select = document.querySelector('select');
+// select.addEventListener('change', (event) => {
+//   const numBars = parseInt(event.target.value);
+//   changeNumberOfBars(numBars);
+// });
+
+
+
+const clientId = 's2LqsOEkHax6OyahsquR';
+const apiKey = 'XkqPvImGC9FxPkZMj1LXWZQXj8ouB5ZYAMFwCkvn';
+const searchQuery = 'kick'; // example search query for kicks
+const resultsPerPage = 10; // number of results to return per page
+const sort = 'downloads_desc'; // sort by most downloaded
+
+fetch(`https://freesound.org/apiv2/search/text/?query=${searchQuery}&page_size=${resultsPerPage}&sort=${sort}&token=${apiKey}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.results);
+    // do something with the search results
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 

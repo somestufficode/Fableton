@@ -14,24 +14,35 @@
 
     <header>
 
-        <div class="header">
-            <h1>Fableton</h1>
-        </div>
-
+        <!-- <div class="header">
+            <h1 id="logo-header">
+                <img id="logo" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/Fabelton-logo.png" alt="Logo">
+            </h1>
+        </div> -->
+    </header>
         <div class="controls">
-            <button id="play">Play</button>
-            <button id="pause">Stop</button>
-            <label id="bpm" for="bpm">BPM:</label>
-            <input type="number" id="bpmvalue" min="1" max="500" value="120">
-            <label id="volume" for="volume">Volume:</label>
-            <input type="range" id="volumerange" min="0" max="1" step="0.01" value="0.5">
+            <!-- <div class="altcontrols"> -->
+                <label id="bpm" for="bpm">BPM:</label>
+                <input type="number" id="bpmvalue" min="50" max="400" value="120">
+                <button id="pause">
+                    <img id="pause-img" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/pause-icon.png" alt="Pause">
+                </button>
+                <button id="play">
+                    <img id="play-img" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/playbutton.png" alt="Play">
+                </button>
+                <label id="volume" for="volume">Volume:</label>
+                <input type="range" id="volumeinput" min="0" max="30" step="1" value="25">
+                <button id="mute">
+                    <img id="mute-img" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/mute.png" alt="Mute">
+                </button>
+            <!-- </div> -->
         </div>
-        <label for="bars">Select number of bars:</label>
+        <!-- <label for="bars">Select number of bars:</label>
             <select id="bars" onchange="changeNumberOfBars()">
             <option value="4">4 Bars</option>
             <option value="8">8 Bars</option>
-            </select>
-    </header>
+            </select> -->
+   
 
     <main>
 
