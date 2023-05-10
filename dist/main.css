@@ -11,7 +11,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -50px;
+  margin-top: -40px;
+  margin-bottom: -15px;
 }
 
 .sequencer {
@@ -159,7 +160,7 @@
   height: 100%;
   width: 100%;
   margin-bottom: 50px;
-  margin-top: 80px;
+  margin-top: 45px;
   animation: bounce 3s;
   max-width: 800px; /* adjust this value to your desired width */
   justify-content: space-between; /* or space-between */
@@ -188,6 +189,14 @@
   display: flex;
   filter: contrast(100%);
   margin-left: -60px;
+}
+
+#save-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
 }
 
 #pause {
@@ -324,7 +333,7 @@
 
 .footer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   animation: bounce 3s;
@@ -332,17 +341,30 @@
   padding: 16px;
   font-size: 16px;
   color: #fff;
+  margin-bottom: 10px;
 }
 
-#save,
-#social {
-  margin-right: 20px;
+#github-logo {
+  width: 75px;
+  height: 75px;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+}
+
+#github {
+  background: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+#save {
   background: #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   padding: 16px;
   font-size: 16px;
   color: #fff;
+  margin-right: 10px;
 }
 
 #save:hover, #social:hover {
