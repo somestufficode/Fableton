@@ -1,41 +1,80 @@
 // index.js
 
+// import * as piano from "./scripts/piano.js";
+// import * as audio from "./scripts/audio.js";
+
+
+// import { beatsOut } from './scripts/audio.js';
+// import { pianoOut } from './scripts/piano.js';
+
+import * as Tone from 'tone';
+
+import { EQ } from 'tone';
+
+// const beatsOut = new Tone.Gain().toDestination();
+// const pianoOut = new Tone.Gain().toDestination();
+// // MASTERING
+// const master = Tone.Destination.chain(pianoOut, beatsOut);
+
+const compressor = new Tone.Compressor({
+  threshold: -24,
+  ratio: 6,
+  attack: 0.3,
+  release: 0.1
+}).toDestination();
+
+const master = new Tone.Gain().connect(compressor);
+
+const limiter = new Tone.Limiter(-6).connect(master);
+
+const beatsOut = new Tone.Gain(0.5).connect(limiter);
+const pianoOut = new Tone.Gain(0.5).connect(limiter);
+
+
+beatsOut.gain.value = -20;
+pianoOut.gain.value = -40;
+
+
+
+
+
 // mouseClearing Functionality 
 
 let isClearing = false;
 
 document.querySelectorAll('.cell').forEach(cell => {
-    cell.addEventListener('mousedown', () => {
-      isClearing = true;
-    });
-  
-    cell.addEventListener('mouseup', () => {
-      isClearing = false;
-    });
-  
-    cell.addEventListener('mousemove', () => {
-      if (isClearing) {
-        cell.classList.remove('active');
-      }
-    });
+  cell.addEventListener('mousedown', () => {
+    isClearing = true;
   });
+
+  cell.addEventListener('mouseup', () => {
+    isClearing = false;
+  });
+
+  cell.addEventListener('mousemove', () => {
+    if (isClearing) {
+      cell.classList.remove('active');
+    }
+  });
+});
 
 
 // import sound Functionality 
 
-import { playKick } from './scripts/audio.js';
+// import { playKick } from './scripts/audio.js';
 
-import { playSnare } from './scripts/audio.js';
+// import { playSnare } from './scripts/audio.js';
 
-import { playBass } from './scripts/audio.js';
+// import { playBass } from './scripts/audio.js';
 
-import { playHiHat }  from './scripts/audio.js';
+// import { playHiHat } from './scripts/audio.js';
 
-import { inputBPM } from './scripts/setters.js';
+// import { inputBPM } from './scripts/setters.js';
 
-import { playMelody } from './scripts/audio.js';
+// import { playMelody } from './scripts/audio.js';
 
-import * as Tone from "tone";
+// MASTERING 
+
 
 // Select Rows 
 // allow Sound Functionality 
@@ -44,56 +83,46 @@ const kickRow = document.querySelector(".kick");
 const kickCells = kickRow.querySelectorAll("div");
 
 kickCells.forEach((kickCell) => {
-    kickCell.addEventListener("click", () => {
-        kickCell.classList.toggle('active');
-        playKick();
-    });
+  kickCell.addEventListener("click", () => {
+    kickCell.classList.toggle('active');
+    playKick();
   });
+});
 
 const snareRow = document.querySelector(".snare");
 const snareCells = snareRow.querySelectorAll("div");
 
 snareCells.forEach((snareCell) => {
-    snareCell.addEventListener("click", () => {
-        snareCell.classList.toggle('active');
-        playSnare();
-    });
+  snareCell.addEventListener("click", () => {
+    snareCell.classList.toggle('active');
+    playSnare();
+  });
 });
 
 const hiHatRow = document.querySelector(".hi-hat");
 const hiHatCells = hiHatRow.querySelectorAll("div");
 
 hiHatCells.forEach((hiHatCell) => {
-    hiHatCell.addEventListener("click", () => {
-        hiHatCell.classList.toggle('active');
-        playHiHat();
-    });
+  hiHatCell.addEventListener("click", () => {
+    hiHatCell.classList.toggle('active');
+    playHiHat();
   });
+});
 
 const bassRow = document.querySelector(".bass");
 const bassCells = bassRow.querySelectorAll("div");
-  
+
 bassCells.forEach((bassCell) => {
-      bassCell.addEventListener("click", () => {
-          bassCell.classList.toggle('active');
-          playBass();
-      });
-    });
+  bassCell.addEventListener("click", () => {
+    bassCell.classList.toggle('active');
+    playBass();
+  });
+});
 
 let index = 0;
 let currentBPM = 120;
 
 Tone.Transport.scheduleRepeat(repeat, "4n");
-
-// Schedule the melody function to play at the beginning of each loop
-// Tone.Transport.schedule((time) => {
-//   melodyLoop = setInterval(playMelody, 60000/currentBPM);
-// }, "0");
-
-// Stop the melody function at the end of each loop
-// Tone.Transport.schedule((time) => {
-//   clearInterval(melodyLoop);
-// }, "4n - 0");
 
 // BPM Change
 const bpmInput = document.querySelector('#bpmvalue');
@@ -103,103 +132,74 @@ bpmInput.addEventListener('input', () => {
   currentBPM = bpmValue;
 });
 
-// click function on Melody Bar 
-// let isPlaying = false;
-// let melodyLoop; 
-
-// const melodyBar = document.querySelector('.melody');
-
-// Play the melody when the melody bar is clicked
-// melodyBar.addEventListener('click', () => {
-//   if (!isPlaying) {
-//     startMelody();
-//   } else {
-//     stopMelody();
-//   }
-// });
-
-// function startMelody() {
-//   if (isPlaying) return;
-  
-//   Tone.Transport.stop();
-//   Tone.Transport.position = 0;
-//   Tone.Transport.start();
-
-//   melodyLoop = setInterval(() => {
-//     playMelody();
-//   }, 60000 / Tone.Transport.bpm.value);
-
-//   isPlaying = true;
-// }
-
-// function stopMelody() {
-//   if (!isPlaying) return;
-
-//   Tone.Transport.stop();
-//   clearInterval(melodyLoop);
-  
-//   isPlaying = false;
-// }
-
-
 
 // VOLUME
-Tone.Destination.volume.value = 20;
+// Tone.Destination.volume.value = 20;
+master 
+console.log(master)
+master.gain.value = 20;
+debugger 
 
 const volumeInput = document.querySelector('#volumeinput');
 volumeInput.addEventListener('input', () => {
   const volumeValue = parseFloat(volumeInput.value);
-  Tone.Destination.volume.value = volumeValue;
+  master.gain.value = volumeValue;
 });
 
 // MUTE 
 mute.addEventListener('click', () => {
-    Tone.Destination.mute = true;
+  Tone.Destination.mute = true;
 })
 
 // Play 
 play.addEventListener('click', () => {
-    for (let i = 0; i < cells.length; i++) {
-        cells[i].textContent = '';
-    }
-    Tone.Transport.start();
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].textContent = '';
+  }
+  Tone.Transport.start();
 })
 
 // Pause
 pause.addEventListener('click', () => {
-    Tone.Transport.pause();
+  Tone.Transport.pause();
 })
 
+document.addEventListener('keydown', e => {
+  if (e.key === ' ') {
+    Tone.Transport.pause();
+  }
+});
+
 // Sequence Function
-    function repeat(time) {
-        let step = index % 16;
-        for (let i = 0; i < cells.length; i++) {
-            let cell = cells[i];
-            let tick = i % 16;
-            let nameValue = cell.getAttribute('name');
-            if (nameValue == step) {
-                    cell.style.backgroundColor = 'black';
-                    cell.classList.add('current-column');
-            } else { 
-                cell.style.backgroundColor = '';
-                cell.classList.remove('current-column');
-            }
-            if (cell.classList.contains('active') && tick === step) {
-                if (cell.parentElement.classList.contains('kick')) {
-                    playKick();
-                } else if (cell.parentElement.classList.contains('snare')) {
-                    playSnare();
-                } else if (cell.parentElement.classList.contains('hi-hat')) {
-                    playHiHat();
-                } else if (cell.parentElement.classList.contains('bass')) {
-                    playBass();
-                }
-            }
-           
-        }
-        index++;
-        Tone.Transport.bpm.value = currentBPM;
+function repeat(time) {
+  let step = index % 16;
+  for (let i = 0; i < cells.length; i++) {
+    let cell = cells[i];
+    let tick = i % 16;
+    let nameValue = cell.getAttribute('name');
+    if (nameValue == step) {
+      cell.style.backgroundColor = 'black';
+      cell.classList.add('current-column');
+    } else {
+      cell.style.backgroundColor = '';
+      cell.classList.remove('current-column');
     }
+    if (cell.classList.contains('active') && tick === step) {
+      if (cell.parentElement.classList.contains('kick')) {
+        playKick();
+      } else if (cell.parentElement.classList.contains('snare')) {
+        playSnare();
+      } else if (cell.parentElement.classList.contains('hi-hat')) {
+        playHiHat();
+      } else if (cell.parentElement.classList.contains('bass')) {
+        playBass();
+      }
+    }
+
+  }
+  index++;
+  Tone.Transport.bpm.value = currentBPM;
+}
 
 const sequencer = document.querySelector('.sequencer');
 const cells = sequencer.querySelectorAll('.cell');
@@ -208,140 +208,218 @@ const cells = sequencer.querySelectorAll('.cell');
 let isRainbowApplied = false;
 
 function applyRainbow() {
-    if (!isRainbowApplied) {
-      const cells = document.querySelectorAll('.cell');
-      cells.forEach(cell => {
-        cell.classList.add('rainbow');
-      });
-      // melodyBar.classList.add('rainbow');
-    } else {
-        resetColors();
-    }
-  }
-  setInterval(applyRainbow, 2000); 
-  let idleTimer = null;
-  let isIdle = true;
-  
-  // Function to change the colors of the sequencer cells
-  function changeCellColors() {
+  if (!isRainbowApplied) {
     const cells = document.querySelectorAll('.cell');
-    const melodyBar = document.querySelector('.melody')
-    cells.forEach((cell) => {
-      // Change the cell color to a random color
-      cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    cells.forEach(cell => {
+      cell.classList.add('rainbow');
     });
-      // melodyBar.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    // melodyBar.classList.add('rainbow');
+  } else {
+    resetColors();
   }
-  
-  // Start the idle timer when the page is loaded
-  window.addEventListener('load', () => {
-    idleTimer = setInterval(() => {
-      // Check if the application is idle
-      if (isIdle) {
-        changeCellColors();
-      }
-    }, 1000); // Change the colors every 1 second
-  });
+}
+setInterval(applyRainbow, 2000);
+let idleTimer = null;
+let isIdle = true;
 
-  function resetColors() {
-    const cells = document.querySelectorAll('.cell');
-    cells.forEach((cell) => {
-      cell.style.backgroundColor = '';
-      cell.classList.remove('rainbow');
-    });
-    // melodyBar.style.backgroundColor = '';
-    // melodyBar.classList.remove('rainbow');
-  }
+// Function to change the colors of the sequencer cells
+function changeCellColors() {
+  const cells = document.querySelectorAll('.cell');
+  const melodyBar = document.querySelector('.melody')
+  cells.forEach((cell) => {
+    // Change the cell color to a random color
+    cell.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  });
+  // melodyBar.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+}
+
+// Start the idle timer when the page is loaded
+window.addEventListener('load', () => {
+  idleTimer = setInterval(() => {
+    // Check if the application is idle
+    if (isIdle) {
+      changeCellColors();
+    }
+  }, 1000); // Change the colors every 1 second
+});
+
+function resetColors() {
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = '';
+    cell.classList.remove('rainbow');
+  });
+  // melodyBar.style.backgroundColor = '';
+  // melodyBar.classList.remove('rainbow');
+}
 
 document.addEventListener('click', () => {
-    // Reset the idle timer when the user interacts with the application
-    // console.log('User has clicked on the page');
-    isIdle = false;
-    isRainbowApplied = true;
-    idleTimer = null;
-    resetColors();
+  // Reset the idle timer when the user interacts with the application
+  // console.log('User has clicked on the page');
+  isIdle = false;
+  isRainbowApplied = true;
+  idleTimer = null;
+  resetColors();
 
-  });
+});
 
 kickCells.forEach(cell => {
-    cell.addEventListener('click', () => {
-      // Remove the letters from the cells
-      kickCells[0].textContent = '';
-      kickCells[1].textContent = '';
-      kickCells[2].textContent = '';
-      kickCells[3].textContent = '';
-    });
+  cell.addEventListener('click', () => {
+    // Remove the letters from the cells
+    kickCells[0].textContent = '';
+    kickCells[1].textContent = '';
+    kickCells[2].textContent = '';
+    kickCells[3].textContent = '';
   });
+});
 
 
 snareCells.forEach(cell => {
-    cell.addEventListener('click', () => {
-      snareCells[3].textContent = '';
-      snareCells[4].textContent = '';
-      snareCells[5].textContent = '';
-      snareCells[6].textContent = '';
-      snareCells[7].textContent = '';
-    });
+  cell.addEventListener('click', () => {
+    snareCells[3].textContent = '';
+    snareCells[4].textContent = '';
+    snareCells[5].textContent = '';
+    snareCells[6].textContent = '';
+    snareCells[7].textContent = '';
   });
+});
 
 
-  hiHatCells.forEach(cell => {
-    cell.addEventListener('click', () => {
-      hiHatCells[7].textContent = '';
-      hiHatCells[8].textContent = '';
-      hiHatCells[9].textContent = '';
-      hiHatCells[10].textContent = '';
-      hiHatCells[11].textContent = '';
-      hiHatCells[12].textContent = '';
-    });
+hiHatCells.forEach(cell => {
+  cell.addEventListener('click', () => {
+    hiHatCells[7].textContent = '';
+    hiHatCells[8].textContent = '';
+    hiHatCells[9].textContent = '';
+    hiHatCells[10].textContent = '';
+    hiHatCells[11].textContent = '';
+    hiHatCells[12].textContent = '';
   });
+});
 
 bassCells.forEach(cell => {
-    cell.addEventListener('click', () => {
-      bassCells[12].textContent = '';
-      bassCells[13].textContent = '';
-      bassCells[14].textContent = '';
-      bassCells[15].textContent = '';
-    });
+  cell.addEventListener('click', () => {
+    bassCells[12].textContent = '';
+    bassCells[13].textContent = '';
+    bassCells[14].textContent = '';
+    bassCells[15].textContent = '';
   });
+});
+
+// Beat Sequencer 
+
+export function playBass() {
+  const bass = new Tone.Synth().connect(beatsOut);
+  const now = Tone.now();
+  bass.triggerAttack("C2", now);
+  bass.triggerRelease(now + 1);
+}
 
 
+export function playSnare() {
+    const snareDrum = new Tone.NoiseSynth().connect(beatsOut);
+      const now = Tone.now();
+      snareDrum.triggerAttackRelease('4n', now);
+}
 
-  // const apiKey = 'XkqPvImGC9FxPkZMj1LXWZQXj8ouB5ZYAMFwCkvn';
-  // const searchQuery = 'kick';
-  // const resultsPerPage = 10;
-  // const sort = 'downloads_desc';
-  // const dropDown = document.querySelector('#sound-select');
-  // fetch(`https://freesound.org/apiv2/search/text/?query=${searchQuery}&sort=${sort}&page_size=${resultsPerPage}`, {
-  //   headers: {
-  //     'Authorization': `Token ${apiKey}`
-  //   }
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     const soundArray = data.results;
-  //     debugger 
-  //     soundArray.forEach(sound => {
+export function playHiHat() {
+  const hiHat = new Tone.MetalSynth({
+    frequency: 2000,
+    envelope: {
+      attack: 0.001,
+      decay: 0.1,
+      release: 0.5
+    },
+    harmonicity: 5.1,
+    resonance: 400,
+    modulationIndex: 32,
+    octaves: 1.5
+  }).connect(beatsOut);
+  const now = Tone.now();
+  hiHat.triggerAttackRelease('4n', now);
+}
 
-  //       const redirectUrl = `https://cdn.freesound.org/previews/1/1234_600-hq.mp3`;
-  //       window.location.href = redirectUrl;
-  //       const option = document.createElement('option');
-  //       debugger 
-  //       option.text = sound.name;
-  //       option.id = sound.id;
-  //       debugger 
-  //       option.sound = sound.preview
-  //       debugger 
-  //       dropDown.add(option);
-  //       option.addEventListener('click', () => {
-  //         const redirectUrl = `https://freesound.org/apiv2/${sound.id}/previews`;
-  //         https://cdn.freesound.org/previews/1/1234_600-hq.mp3
-  //         window.location.href = redirectUrl;
-  //       })
-  //     });
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //   });
+export function playKick() {
+    const kick = new Tone.MembraneSynth({
+      pitchDecay: 0.008,
+      octaves: 2,
+      envelope: {
+        attack: 0.001,
+        decay: 0.5,
+        sustain: 0.1,
+        release: 1
+      }
+    }).connect(beatsOut);
+    const now = Tone.now();
+    kick.triggerAttackRelease("C1", "4n", now);
+}
+
+beatsOut.gain.value = -30;
+
+// Piano Roll
+
+const keyToNote = {
+  'q': 'C4',
+  // 'a': 'C#4',
+  'w': 'D4',
+  // 's': 'D#4',
+  'e': 'E4',
+  'r': 'F4',
+  // 'd': 'F#4',
+  't': 'G4',
+  // 'f': 'G#4',
+  'y': 'A4',
+  // 'g': 'A#4',
+  'u': 'B4',
+  'v': 'C5',
+  // 'h': 'C#5',
+  'b': 'D5',
+  // 'j': 'D#5',
+  'n': 'E5',
+  'm': 'F5',
+  // 'k': 'F#5',
+  ',': 'G5',
+  // 'l': 'G#5',
+  '.': 'A5',
+  // ';': 'A#5',
+  '/': 'B5',
+};
+
+const notes = Object.values(keyToNote);
+
+const pianoSynth = new Tone.Synth({
+oscillator: {
+  type: 'sine' 
+},
+envelope: {
+  attack: 0.1,
+  sustain: 1.0,
+  release: 0.1,
+  decay: 0.1
+}
+
+}).connect(pianoOut);
+
+pianoSynth.volume.value = -50;
 
 
+document.addEventListener('keydown', e => {
+const noteHere = keyToNote[e.key];
+if (noteHere) {
+  const noteID = document.querySelector(`.note.${noteHere}`);
+  debugger 
+  noteID.classList.add('playing');
+  debugger 
+  const duration = Tone.Time(Tone.context.currentTime).toSeconds();
+  pianoSynth.triggerAttack(noteHere, Tone.context.currentTime, duration);
+}
+});
+
+document.addEventListener('keyup', e => {
+const noteHere = keyToNote[e.key];
+if (noteHere) {
+  const noteID = document.querySelector(`.note.${noteHere}`);
+  debugger 
+  noteID.classList.remove('playing');
+  pianoSynth.triggerRelease();
+}
+});

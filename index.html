@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/favicon.png">
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js" defer></script>
     <title>Fableton</title>
@@ -28,14 +29,14 @@
     </header>
         <div class="controls">
             <!-- <div class="altcontrols"> -->
-                <label id="bpm" for="bpm">BPM:</label>
-                <input type="number" id="bpmvalue" min="50" max="400" value="120">
-                <button id="pause">
-                    <img id="pause-img" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/pause-icon.png" alt="Pause">
-                </button>
                 <button id="play">
                     <img id="play-img" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/playbutton.png" alt="Play">
                 </button>
+                <button id="pause">
+                    <img id="pause-img" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/pause-icon.png" alt="Pause">
+                </button>
+                <label id="bpm" for="bpm">BPM:</label>
+                <input type="number" id="bpmvalue" min="50" max="400" value="120">
                 <label id="volume" for="volume">Volume:</label>
                 <input type="range" id="volumeinput" min="0" max="40" step="2" value="20">
                 <button id="mute">
@@ -142,6 +143,33 @@
 
             </div>
 
+            <div class="piano-roll">
+                <div class="note C4"></div>
+                <div class="note c-sharp"></div>
+                <div class="note D4"></div>
+                <div class="note d-sharp"></div>
+                <div class="note E4"></div>
+                <div class="note F4"></div>
+                <div class="note f-sharp"></div>
+                <div class="note G4"></div>
+                <div class="note g-sharp"></div>
+                <div class="note A4"></div>
+                <div class="note a-sharp"></div>
+                <div class="note B4"></div>
+                <div class="note C5"></div>
+                <div class="note c-sharp2"></div>
+                <div class="note D5"></div>
+                <div class="note d-sharp2"></div>
+                <div class="note E5"></div>
+                <div class="note F5"></div>
+                <div class="note f-sharp2"></div>
+                <div class="note G5"></div>
+                <div class="note g-sharp2"></div>
+                <div class="note A5"></div>
+                <div class="note a-sharp2"></div>
+                <div class="note B5"></div>
+              </div>
+              
         </div>
 
     </main>
@@ -157,9 +185,9 @@
                 <a href="https://www.linkedin.com/in/"><img id="link-logo" src="linkedin.png" alt="LinkedIn"></a>
                 </div> -->
             </div>
-            <button id="save">
+            <!-- <button id="save">
                 <img id="save-button" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/save-button.png">
-            </button>
+            </button> -->
         </div>
 
     </footer>

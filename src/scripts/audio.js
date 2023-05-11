@@ -3,8 +3,10 @@
 
 import * as Tone from "tone"; 
 
+export const beatsOut = new Tone.Gain().toDestination();
+
 export function playBass() {
-  const bass = new Tone.Synth().toDestination();
+  const bass = new Tone.Synth().connect(beatsOut);
   const now = Tone.now();
   bass.triggerAttack("C2", now);
   bass.triggerRelease(now + 1);
@@ -12,7 +14,7 @@ export function playBass() {
 
 
 export function playSnare() {
-    const snareDrum = new Tone.NoiseSynth().toDestination();
+    const snareDrum = new Tone.NoiseSynth().connect(beatsOut);
       const now = Tone.now();
       snareDrum.triggerAttackRelease('4n', now);
 }
@@ -29,7 +31,7 @@ export function playHiHat() {
     resonance: 400,
     modulationIndex: 32,
     octaves: 1.5
-  }).toDestination();
+  }).connect(beatsOut);
   const now = Tone.now();
   hiHat.triggerAttackRelease('4n', now);
 }
@@ -44,10 +46,12 @@ export function playKick() {
         sustain: 0.1,
         release: 1
       }
-    }).toDestination();
+    }).connect(beatsOut);
     const now = Tone.now();
     kick.triggerAttackRelease("C1", "4n", now);
 }
+
+
 
 // export function playMelody() {
 //       const synth = new Tone.PolySynth(Tone.Synth).toDestination();
@@ -61,20 +65,20 @@ export function playKick() {
 // }
 
 
-export function playMelody() {
-  const synth = new Tone.PolySynth(Tone.Synth).toDestination();
-  const now = Tone.now();
-  const beatsPerSecond = Tone.Transport.bpm.value/ 60;
-  const beatDuration = 1 / beatsPerSecond;
-  const noteDuration = beatDuration * 2;
-  const notes = ["D4", "F4", "A4", "C5", "E5"];
+// export function playMelody() {
+//   const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+//   const now = Tone.now();
+//   const beatsPerSecond = Tone.Transport.bpm.value/ 60;
+//   const beatDuration = 1 / beatsPerSecond;
+//   const noteDuration = beatDuration * 2;
+//   const notes = ["D4", "F4", "A4", "C5", "E5"];
 
-  for (let i = 0; i < notes.length; i++) {
-    const noteTime = now + i * noteDuration;
-    synth.triggerAttack(notes[i], noteTime);
-    synth.triggerRelease(notes[i], noteTime + noteDuration);
-  }
-}
+//   for (let i = 0; i < notes.length; i++) {
+//     const noteTime = now + i * noteDuration;
+//     synth.triggerAttack(notes[i], noteTime);
+//     synth.triggerRelease(notes[i], noteTime + noteDuration);
+//   }
+// }
 
 
 
