@@ -29,127 +29,197 @@
 }
 
 .cell {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border: 1px solid white;
   border-radius: 10px;
   margin-right: 5px;
   cursor: pointer;
 }
 
+.melody {
+  width: 100%;
+  height: 100px;
+  background-color: #008cdd;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#MelodyText {
+  font-size: 75px;
+  align-items: center;
+  font-weight: bold;
+  font-style: monaco;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  animation: bounce 5s;
+}
+
 .kick .cell:nth-child(1),
 .snare .cell:nth-child(1),
 .hi-hat .cell:nth-child(1),
-.bass .cell:nth-child(1) {
-  background-color: #f03e3e;
-  border-left-color: white;
-}
-
+.bass .cell:nth-child(1),
 .kick .cell:nth-child(2),
 .snare .cell:nth-child(2),
 .hi-hat .cell:nth-child(2),
-.bass .cell:nth-child(2) {
-  background-color: #efca29;
-}
-
+.bass .cell:nth-child(2),
 .kick .cell:nth-child(3),
 .snare .cell:nth-child(3),
 .hi-hat .cell:nth-child(3),
-.bass .cell:nth-child(3) {
-  background-color: #3cb44b;
-}
-
+.bass .cell:nth-child(3),
 .kick .cell:nth-child(4),
 .snare .cell:nth-child(4),
 .hi-hat .cell:nth-child(4),
 .bass .cell:nth-child(4) {
-  background-color: #008cdd;
-  border-right-color: rgb(0, 0, 0);
+  background-color: #f03e3e;
+  border-left-color: white;
 }
 
 .kick .cell:nth-child(5),
 .snare .cell:nth-child(5),
 .hi-hat .cell:nth-child(5),
-.bass .cell:nth-child(5) {
-  background-color: #ff5500;
-  border-left-color: rgb(0, 0, 0);
-}
-
+.bass .cell:nth-child(5),
 .kick .cell:nth-child(6),
 .snare .cell:nth-child(6),
 .hi-hat .cell:nth-child(6),
-.bass .cell:nth-child(6) {
-  background-color: #a53ed5;
-}
-
+.bass .cell:nth-child(6),
 .kick .cell:nth-child(7),
 .snare .cell:nth-child(7),
 .hi-hat .cell:nth-child(7),
-.bass .cell:nth-child(7) {
-  background-color: #47d1d1;
-}
-
+.bass .cell:nth-child(7),
 .kick .cell:nth-child(8),
 .snare .cell:nth-child(8),
 .hi-hat .cell:nth-child(8),
 .bass .cell:nth-child(8) {
-  background-color: #eee;
-  border-right-color: gray;
+  background-color: #efca29;
+}
+
+.kick .cell:nth-child(9),
+.snare .cell:nth-child(9),
+.hi-hat .cell:nth-child(9),
+.bass .cell:nth-child(9),
+.kick .cell:nth-child(10),
+.snare .cell:nth-child(10),
+.hi-hat .cell:nth-child(10),
+.bass .cell:nth-child(10),
+.kick .cell:nth-child(11),
+.snare .cell:nth-child(11),
+.hi-hat .cell:nth-child(11),
+.bass .cell:nth-child(11),
+.kick .cell:nth-child(12),
+.snare .cell:nth-child(12),
+.hi-hat .cell:nth-child(12),
+.bass .cell:nth-child(12) {
+  background-color: #3cb44b;
+}
+
+.kick .cell:nth-child(13),
+.snare .cell:nth-child(13),
+.hi-hat .cell:nth-child(13),
+.bass .cell:nth-child(13),
+.kick .cell:nth-child(14),
+.snare .cell:nth-child(14),
+.hi-hat .cell:nth-child(14),
+.bass .cell:nth-child(14),
+.kick .cell:nth-child(15),
+.snare .cell:nth-child(15),
+.hi-hat .cell:nth-child(15),
+.bass .cell:nth-child(15),
+.kick .cell:nth-child(16),
+.snare .cell:nth-child(16),
+.hi-hat .cell:nth-child(16),
+.bass .cell:nth-child(16) {
+  background-color: #008cdd;
+  border-right-color: rgb(0, 0, 0);
 }
 
 .kick .cell:nth-child(1).active,
 .snare .cell:nth-child(1).active,
 .hi-hat .cell:nth-child(1).active,
-.bass .cell:nth-child(1).active {
+.bass .cell:nth-child(1).active,
+.kick .cell:nth-child(9).active,
+.snare .cell:nth-child(9).active,
+.hi-hat .cell:nth-child(9).active,
+.bass .cell:nth-child(9).active {
   background: linear-gradient(to top, #000000, #f03e3e);
 }
 
 .kick .cell:nth-child(2).active,
 .snare .cell:nth-child(2).active,
 .hi-hat .cell:nth-child(2).active,
-.bass .cell:nth-child(2).active {
+.bass .cell:nth-child(2).active,
+.kick .cell:nth-child(10).active,
+.snare .cell:nth-child(10).active,
+.hi-hat .cell:nth-child(10).active,
+.bass .cell:nth-child(10).active {
   background: linear-gradient(to top, #000000, #efca29);
 }
 
 .kick .cell:nth-child(3).active,
 .snare .cell:nth-child(3).active,
 .hi-hat .cell:nth-child(3).active,
-.bass .cell:nth-child(3).active {
+.bass .cell:nth-child(3).active,
+.kick .cell:nth-child(11).active,
+.snare .cell:nth-child(11).active,
+.hi-hat .cell:nth-child(11).active,
+.bass .cell:nth-child(11).active {
   background: linear-gradient(to top, #000000, #3cb44b);
 }
 
 .kick .cell:nth-child(4).active,
 .snare .cell:nth-child(4).active,
 .hi-hat .cell:nth-child(4).active,
-.bass .cell:nth-child(4).active {
+.bass .cell:nth-child(4).active,
+.kick .cell:nth-child(12).active,
+.snare .cell:nth-child(12).active,
+.hi-hat .cell:nth-child(12).active,
+.bass .cell:nth-child(12).active {
   background: linear-gradient(to top, #000000, #008cdd);
 }
 
 .kick .cell:nth-child(5).active,
 .snare .cell:nth-child(5).active,
 .hi-hat .cell:nth-child(5).active,
-.bass .cell:nth-child(5).active {
+.bass .cell:nth-child(5).active,
+.kick .cell:nth-child(13).active,
+.snare .cell:nth-child(13).active,
+.hi-hat .cell:nth-child(13).active,
+.bass .cell:nth-child(13).active {
   background: linear-gradient(to top, #000000, #ff5500);
 }
 
 .kick .cell:nth-child(6).active,
 .snare .cell:nth-child(6).active,
 .hi-hat .cell:nth-child(6).active,
-.bass .cell:nth-child(6).active {
+.bass .cell:nth-child(6).active,
+.kick .cell:nth-child(14).active,
+.snare .cell:nth-child(14).active,
+.hi-hat .cell:nth-child(14).active,
+.bass .cell:nth-child(14).active {
   background: linear-gradient(to top, #000000, #a53ed5);
 }
 
 .kick .cell:nth-child(7).active,
 .snare .cell:nth-child(7).active,
 .hi-hat .cell:nth-child(7).active,
-.bass .cell:nth-child(7).active {
+.bass .cell:nth-child(7).active,
+.kick .cell:nth-child(15).active,
+.snare .cell:nth-child(15).active,
+.hi-hat .cell:nth-child(15).active,
+.bass .cell:nth-child(15).active {
   background: linear-gradient(to top, #000000, #47d1d1);
 }
 
 .kick .cell:nth-child(8).active,
 .snare .cell:nth-child(8).active,
 .hi-hat .cell:nth-child(8).active,
-.bass .cell:nth-child(8).active {
+.bass .cell:nth-child(8).active,
+.kick .cell:nth-child(16).active,
+.snare .cell:nth-child(16).active,
+.hi-hat .cell:nth-child(16).active,
+.bass .cell:nth-child(16).active {
   background: linear-gradient(to top, #000000, #eee);
 }
 
@@ -162,8 +232,8 @@
   margin-bottom: 50px;
   margin-top: 45px;
   animation: bounce 3s;
-  max-width: 800px; /* adjust this value to your desired width */
-  justify-content: space-between; /* or space-between */
+  max-width: 800px;
+  justify-content: space-between;
   margin-left: 290px;
 }
 
@@ -373,7 +443,7 @@
 }
 
 body {
-  margin: 0 auto; /* this centers the content within the max-width */
+  margin: 0 auto;
   background-color: #000000;
 }
 
@@ -409,7 +479,7 @@ body {
   }
 }
 #letter {
-  font-size: 100px;
+  font-size: 75px;
   font-weight: bold;
   font-style: monaco;
   color: rgb(0, 0, 0);
