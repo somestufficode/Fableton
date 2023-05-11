@@ -139,88 +139,76 @@
 .snare .cell:nth-child(1).active,
 .hi-hat .cell:nth-child(1).active,
 .bass .cell:nth-child(1).active,
-.kick .cell:nth-child(9).active,
-.snare .cell:nth-child(9).active,
-.hi-hat .cell:nth-child(9).active,
-.bass .cell:nth-child(9).active {
-  background: linear-gradient(to top, #000000, #f03e3e);
-}
-
 .kick .cell:nth-child(2).active,
 .snare .cell:nth-child(2).active,
 .hi-hat .cell:nth-child(2).active,
 .bass .cell:nth-child(2).active,
-.kick .cell:nth-child(10).active,
-.snare .cell:nth-child(10).active,
-.hi-hat .cell:nth-child(10).active,
-.bass .cell:nth-child(10).active {
-  background: linear-gradient(to top, #000000, #efca29);
-}
-
 .kick .cell:nth-child(3).active,
 .snare .cell:nth-child(3).active,
 .hi-hat .cell:nth-child(3).active,
 .bass .cell:nth-child(3).active,
-.kick .cell:nth-child(11).active,
-.snare .cell:nth-child(11).active,
-.hi-hat .cell:nth-child(11).active,
-.bass .cell:nth-child(11).active {
-  background: linear-gradient(to top, #000000, #3cb44b);
-}
-
 .kick .cell:nth-child(4).active,
 .snare .cell:nth-child(4).active,
 .hi-hat .cell:nth-child(4).active,
-.bass .cell:nth-child(4).active,
-.kick .cell:nth-child(12).active,
-.snare .cell:nth-child(12).active,
-.hi-hat .cell:nth-child(12).active,
-.bass .cell:nth-child(12).active {
-  background: linear-gradient(to top, #000000, #008cdd);
+.bass .cell:nth-child(4).active {
+  background: linear-gradient(to top, #000000, #f03e3e);
 }
 
 .kick .cell:nth-child(5).active,
 .snare .cell:nth-child(5).active,
 .hi-hat .cell:nth-child(5).active,
 .bass .cell:nth-child(5).active,
-.kick .cell:nth-child(13).active,
-.snare .cell:nth-child(13).active,
-.hi-hat .cell:nth-child(13).active,
-.bass .cell:nth-child(13).active {
-  background: linear-gradient(to top, #000000, #ff5500);
-}
-
 .kick .cell:nth-child(6).active,
 .snare .cell:nth-child(6).active,
 .hi-hat .cell:nth-child(6).active,
 .bass .cell:nth-child(6).active,
-.kick .cell:nth-child(14).active,
-.snare .cell:nth-child(14).active,
-.hi-hat .cell:nth-child(14).active,
-.bass .cell:nth-child(14).active {
-  background: linear-gradient(to top, #000000, #a53ed5);
-}
-
 .kick .cell:nth-child(7).active,
 .snare .cell:nth-child(7).active,
 .hi-hat .cell:nth-child(7).active,
 .bass .cell:nth-child(7).active,
-.kick .cell:nth-child(15).active,
-.snare .cell:nth-child(15).active,
-.hi-hat .cell:nth-child(15).active,
-.bass .cell:nth-child(15).active {
-  background: linear-gradient(to top, #000000, #47d1d1);
-}
-
 .kick .cell:nth-child(8).active,
 .snare .cell:nth-child(8).active,
 .hi-hat .cell:nth-child(8).active,
-.bass .cell:nth-child(8).active,
+.bass .cell:nth-child(8).active {
+  background: linear-gradient(to top, #000000, #efca29);
+}
+
+.kick .cell:nth-child(9).active,
+.snare .cell:nth-child(9).active,
+.hi-hat .cell:nth-child(9).active,
+.bass .cell:nth-child(9).active,
+.kick .cell:nth-child(10).active,
+.snare .cell:nth-child(10).active,
+.hi-hat .cell:nth-child(10).active,
+.bass .cell:nth-child(10).active,
+.kick .cell:nth-child(11).active,
+.snare .cell:nth-child(11).active,
+.hi-hat .cell:nth-child(11).active,
+.bass .cell:nth-child(11).active,
+.kick .cell:nth-child(12).active,
+.snare .cell:nth-child(12).active,
+.hi-hat .cell:nth-child(12).active,
+.bass .cell:nth-child(12).active {
+  background: linear-gradient(to top, #000000, #3cb44b);
+}
+
+.kick .cell:nth-child(13).active,
+.snare .cell:nth-child(13).active,
+.hi-hat .cell:nth-child(13).active,
+.bass .cell:nth-child(13).active,
+.kick .cell:nth-child(14).active,
+.snare .cell:nth-child(14).active,
+.hi-hat .cell:nth-child(14).active,
+.bass .cell:nth-child(14).active,
+.kick .cell:nth-child(15).active,
+.snare .cell:nth-child(15).active,
+.hi-hat .cell:nth-child(15).active,
+.bass .cell:nth-child(15).active,
 .kick .cell:nth-child(16).active,
 .snare .cell:nth-child(16).active,
 .hi-hat .cell:nth-child(16).active,
 .bass .cell:nth-child(16).active {
-  background: linear-gradient(to top, #000000, #eee);
+  background: linear-gradient(to top, #000000, #008cdd);
 }
 
 .controls {
