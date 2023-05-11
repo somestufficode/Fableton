@@ -9,7 +9,7 @@
 
 import * as Tone from 'tone';
 
-import { EQ } from 'tone';
+// import { EQ } from 'tone';
 
 // const beatsOut = new Tone.Gain().toDestination();
 // const pianoOut = new Tone.Gain().toDestination();
@@ -33,9 +33,6 @@ const pianoOut = new Tone.Gain(0.5).connect(limiter);
 
 beatsOut.gain.value = -20;
 pianoOut.gain.value = -40;
-
-
-
 
 
 // mouseClearing Functionality 
@@ -135,10 +132,10 @@ bpmInput.addEventListener('input', () => {
 
 // VOLUME
 // Tone.Destination.volume.value = 20;
-master 
-console.log(master)
-master.gain.value = 20;
-debugger 
+// master 
+// console.log(master)
+master.gain.value = 50;
+// debugger 
 
 const volumeInput = document.querySelector('#volumeinput');
 volumeInput.addEventListener('input', () => {
@@ -236,11 +233,10 @@ function changeCellColors() {
 // Start the idle timer when the page is loaded
 window.addEventListener('load', () => {
   idleTimer = setInterval(() => {
-    // Check if the application is idle
     if (isIdle) {
       changeCellColors();
     }
-  }, 1000); // Change the colors every 1 second
+  }, 1000); 
 });
 
 function resetColors() {
@@ -322,20 +318,21 @@ export function playSnare() {
 }
 
 export function playHiHat() {
-  const hiHat = new Tone.MetalSynth({
-    frequency: 2000,
+  const hiHat = new Tone.NoiseSynth({
+    noise: {
+      type: "pink",
+      playbackRate: 3
+    },
     envelope: {
       attack: 0.001,
-      decay: 0.1,
-      release: 0.5
-    },
-    harmonicity: 5.1,
-    resonance: 400,
-    modulationIndex: 32,
-    octaves: 1.5
+      decay: 0.05,
+      sustain: 0.001,
+      release: 0.05
+    }
   }).connect(beatsOut);
+
   const now = Tone.now();
-  hiHat.triggerAttackRelease('4n', now);
+  hiHat.triggerAttackRelease("16n", now);
 }
 
 export function playKick() {

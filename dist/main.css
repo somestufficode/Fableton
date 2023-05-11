@@ -359,10 +359,11 @@
   align-items: center;
   width: 30%;
   cursor: pointer;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  margin-left: 465px;
+  margin-bottom: -300px;
+  margin-top: 50px;
+  height: 50%;
 }
 
 #logo:hover {
@@ -603,4 +604,18 @@ body {
 
 .B5 {
   background-color: white;
+}
+
+.blurb {
+  color: white;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  width: 75%;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  margin-left: 150px;
+  margin-top: 200px;
 }
