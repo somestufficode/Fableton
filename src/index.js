@@ -129,7 +129,7 @@ bassCells.forEach((bassCell) => {
 let index = 0;
 let currentBPM = 120;
 
-Tone.Transport.scheduleRepeat(repeat, "8n");
+Tone.Transport.scheduleRepeat(repeat, "4n");
 
 // BPM Change
 const bpmInput = document.querySelector('#bpmvalue');
