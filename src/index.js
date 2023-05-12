@@ -141,7 +141,7 @@ bpmInput.addEventListener('input', () => {
 
 
 // VOLUME
-master.gain.value = 5000;
+master.gain.value = 50;
 
 const volumeInput = document.querySelector('#volumeinput');
 volumeInput.addEventListener('input', () => {
