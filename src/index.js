@@ -30,6 +30,16 @@ const limiter = new Tone.Limiter(-6).connect(master);
 const beatsOut = new Tone.Gain(0.5).connect(limiter);
 const pianoOut = new Tone.Gain(0.5).connect(limiter);
 
+const reverb = new Tone.Freeverb({
+  roomSize  : 0.7 ,
+  dampening  : 8000
+  });
+  const feedbackDelay = new Tone.FeedbackDelay({
+  delayTime  : "32n",
+    feedback : 0.25
+  });
+
+  pianoOut.chain(reverb, feedbackDelay);
 
 beatsOut.gain.value = -20;
 pianoOut.gain.value = -40;
@@ -119,7 +129,7 @@ bassCells.forEach((bassCell) => {
 let index = 0;
 let currentBPM = 120;
 
-Tone.Transport.scheduleRepeat(repeat, "4n");
+Tone.Transport.scheduleRepeat(repeat, "8n");
 
 // BPM Change
 const bpmInput = document.querySelector('#bpmvalue');
@@ -131,11 +141,7 @@ bpmInput.addEventListener('input', () => {
 
 
 // VOLUME
-// Tone.Destination.volume.value = 20;
-// master 
-// console.log(master)
-master.gain.value = 50;
-// debugger 
+master.gain.value = 5000;
 
 const volumeInput = document.querySelector('#volumeinput');
 volumeInput.addEventListener('input', () => {
@@ -315,6 +321,7 @@ export function playSnare() {
     const snareDrum = new Tone.NoiseSynth().connect(beatsOut);
       const now = Tone.now();
       snareDrum.triggerAttackRelease('4n', now);
+      
 }
 
 export function playHiHat() {
@@ -332,7 +339,7 @@ export function playHiHat() {
   }).connect(beatsOut);
 
   const now = Tone.now();
-  hiHat.triggerAttackRelease("16n", now);
+  hiHat.triggerAttackRelease("4n", now);
 }
 
 export function playKick() {
