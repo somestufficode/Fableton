@@ -27,22 +27,35 @@ const master = new Tone.Gain().connect(compressor);
 
 const limiter = new Tone.Limiter(-6).connect(master);
 
-const beatsOut = new Tone.Gain(0.5).connect(limiter);
-const pianoOut = new Tone.Gain(0.5).connect(limiter);
+const kickChannel = new Tone.Channel(-0.25, -0.25).connect(limiter);
+const pianoChannel = new Tone.Channel(0.75, 0.50).connect(limiter);
+const snareChannel = new Tone.Channel(-0.50, -0.10).connect(limiter);
+const hiHatChannel = new Tone.Channel(-0.50,-0.10).connect(limiter);
+const bassChannel = new Tone.Channel(-0.25,-0.50).connect(limiter);
 
-const reverb = new Tone.Freeverb({
-  roomSize  : 0.7 ,
-  dampening  : 8000
-  });
-  const feedbackDelay = new Tone.FeedbackDelay({
-  delayTime  : "32n",
-    feedback : 0.25
-  });
+const pianoFilter = new Tone.Filter(700, "lowpass").connect(pianoChannel);
+const kickFilter = new Tone.Filter(150, "highpass").connect(kickChannel);
+const bassFilter = new Tone.Filter(50, "highpass").connect(bassChannel);
 
-  pianoOut.chain(reverb, feedbackDelay);
 
-beatsOut.gain.value = -20;
-pianoOut.gain.value = -40;
+
+
+// const beatsOut = new Tone.Gain(0.5).connect(limiter);
+// const pianoOut = new Tone.Gain(0.5).connect(limiter);
+
+// const reverb = new Tone.Freeverb({
+//   roomSize  : 0.7 ,
+//   dampening  : 8000
+//   });
+//   const feedbackDelay = new Tone.FeedbackDelay({
+//   delayTime  : "32n",
+//     feedback : 0.25
+//   });
+
+//   pianoOut.chain(reverb, feedbackDelay);
+
+// beatsOut.gain.value = -20;
+// pianoOut.gain.value = -40;
 
 
 // mouseClearing Functionality 
@@ -310,7 +323,7 @@ bassCells.forEach(cell => {
 // Beat Sequencer 
 
 export function playBass() {
-  const bass = new Tone.Synth().connect(beatsOut);
+  const bass = new Tone.Synth().connect(bassFilter);
   const now = Tone.now();
   bass.triggerAttack("C2", now);
   bass.triggerRelease(now + 1);
@@ -318,10 +331,9 @@ export function playBass() {
 
 
 export function playSnare() {
-    const snareDrum = new Tone.NoiseSynth().connect(beatsOut);
+    const snareDrum = new Tone.NoiseSynth().connect(snareChannel);
       const now = Tone.now();
-      snareDrum.triggerAttackRelease('4n', now);
-      
+      snareDrum.triggerAttackRelease('4n', now); 
 }
 
 export function playHiHat() {
@@ -336,7 +348,7 @@ export function playHiHat() {
       sustain: 0.001,
       release: 0.05
     }
-  }).connect(beatsOut);
+  }).connect(hiHatChannel);
 
   const now = Tone.now();
   hiHat.triggerAttackRelease("4n", now);
@@ -346,46 +358,46 @@ export function playKick() {
     const kick = new Tone.MembraneSynth({
       pitchDecay: 0.008,
       octaves: 2,
-      envelope: {
-        attack: 0.001,
-        decay: 0.5,
-        sustain: 0.1,
-        release: 1
-      }
-    }).connect(beatsOut);
+        envelope: {
+          attack: 0.001,
+          decay: 0.5,
+          sustain: 0.1,
+          release: 1
+    }
+}).connect(kickFilter);
     const now = Tone.now();
     kick.triggerAttackRelease("C1", "4n", now);
 }
 
-beatsOut.gain.value = -30;
+// beatsOut.gain.value = -30;
 
 // Piano Roll
 
 const keyToNote = {
-  'q': 'C4',
+  'q': 'C3',
   // 'a': 'C#4',
-  'w': 'D4',
+  'w': 'D3',
   // 's': 'D#4',
-  'e': 'E4',
-  'r': 'F4',
+  'e': 'E3',
+  'r': 'F3',
   // 'd': 'F#4',
-  't': 'G4',
+  't': 'G3',
   // 'f': 'G#4',
-  'y': 'A4',
+  'y': 'A3',
   // 'g': 'A#4',
-  'u': 'B4',
-  'v': 'C5',
+  'u': 'B3',
+  'v': 'C4',
   // 'h': 'C#5',
-  'b': 'D5',
+  'b': 'D4',
   // 'j': 'D#5',
-  'n': 'E5',
-  'm': 'F5',
+  'n': 'E4',
+  'm': 'F4',
   // 'k': 'F#5',
-  ',': 'G5',
+  ',': 'G4',
   // 'l': 'G#5',
-  '.': 'A5',
+  '.': 'A4',
   // ';': 'A#5',
-  '/': 'B5',
+  '/': 'B4',
 };
 
 const notes = Object.values(keyToNote);
@@ -401,7 +413,7 @@ envelope: {
   decay: 0.1
 }
 
-}).connect(pianoOut);
+}).connect(pianoFilter);
 
 pianoSynth.volume.value = -50;
 
