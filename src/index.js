@@ -23,7 +23,7 @@ const compressor = new Tone.Compressor({
   release: 0.1
 }).toDestination();
 
-const master = new Tone.Gain().connect(compressor);
+const master = new Tone.Gain(0.5).connect(compressor);
 
 const limiter = new Tone.Limiter(-6).connect(master);
 
@@ -154,7 +154,7 @@ bpmInput.addEventListener('input', () => {
 
 
 // VOLUME
-master.gain.value = 25;
+master.gain.value = 10;
 
 const volumeInput = document.querySelector('#volumeinput');
 volumeInput.addEventListener('input', () => {
@@ -359,7 +359,7 @@ export function playKick() {
       pitchDecay: 0.008,
       octaves: 2,
         envelope: {
-          attack: 0.001,
+          attack: 0.05,
           decay: 0.5,
           sustain: 0.1,
           release: 1
