@@ -1,197 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="icon" type="image/x-icon" href="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/favicon.png">
     <script src="./dist/main.js" defer></script>
-    <title>Fableton</title>
+	<title>Fableton</title>
 </head>
+    <div id="header">
+        <img id="logo" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/Fabelton-logo.png" alt="Logo">
+	<script>
+		const logo = document.querySelector('#logo');
+		logo.addEventListener('click', function() {
+			window.location.href = 'index.html';
+		});
+	</script>
+    </div>
 
-<body>
+        <div class="blurb">
+            Click on the cells in the grid to activate/deactivate them and create a pattern of beats. You can also use the mouse to click and drag to activate/deactivate multiple cells at once.
+            The "play" button will start the sequencer, while the "pause" button will pause it. You can also use the space bar on your keyboard to pause the sequencer.
+            To use the piano roll, press and hold down certain keys on your keyboard. Use the displayed piano keys as a guide to know which keys to play on the keyboard.
+            Have fun experimenting with different patterns of beats and adjusting the tempo and volume to create your own unique sound!
 
-    <header>
-        <!-- <select id="sound-select">
-            <option value="">Select a sound</option>
-          </select>
-          <audio controls>
-            <source src="https://cdn.freesound.org/previews/1/1234_600-hq.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio> -->
-        <!-- <div class="header">
-            <h1 id="logo-header">
-                <img id="logo" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/Fabelton-logo.png" alt="Logo">
-            </h1>
-        </div> -->
-    </header>
-        <div class="controls">
-            <!-- <div class="altcontrols"> -->
-                <button id="play">
-                    <img id="play-img" src="./images/playbutton.png" alt="Play">
-                </button>
-                <button id="pause">
-                    <img id="pause-img" src="./images/pause-icon.png" alt="Pause">
-                </button>
-                <label id="bpm" for="bpm">BPM:</label>
-                <input type="number" id="bpmvalue" min="50" max="400" value="120">
-                <label id="volume" for="volume">Volume:</label>
-                <input type="range" id="volumeinput" min="0" max="50" step="5" value="25">
-                <button id="mute">
-                    <img id="mute-img" src="./images/mute.png" alt="Mute">
-                </button>
-            <!-- </div> -->
-        </div>
-        <!-- <label for="bars">Select number of bars:</label>
-            <select id="bars" onchange="changeNumberOfBars()">
-            <option value="4">4 Bars</option>
-            <option value="8">8 Bars</option>
-            </select> -->
-   
-
-    <main>
-
-        <div class="sequencer-container">
-
-            <div class="sequencer">
-
-                <div class="instrument-row">
-                    <div id="kick" class="kick">
-                        <div name="0" id="letter" class="cell">K</div>
-                        <div name="1" id="letter" class="cell">I</div>
-                        <div name="2" id="letter" class="cell">C</div>
-                        <div name="3" id="letter" class="cell">K</div>
-                        <div name="4" class="cell"></div>
-                        <div name="5" class="cell"></div>
-                        <div name="6" class="cell"></div>
-                        <div name="7" class="cell"></div>
-                        <div name="8" class="cell"></div>
-                        <div name="9" class="cell"></div>
-                        <div name="10" class="cell"></div>
-                        <div name="11" class="cell"></div>
-                        <div name="12" class="cell"></div>
-                        <div name="13" class="cell"></div>
-                        <div name="14" class="cell"></div>
-                        <div name="15" class="cell"></div>
-                    </div>
-                </div>
-               
-                <div class="instrument-row">
-                    <div class="snare">
-                        <div name="0" class="cell"></div>
-                        <div name="1" class="cell"></div>
-                        <div name="2" class="cell"></div>
-                        <div name="3" id="letter" class="cell">S</div>
-                        <div name="4" id="letter" class="cell">N</div>
-                        <div name="5" id="letter" class="cell">A</div>
-                        <div name="6" id="letter" class="cell">R</div>
-                        <div name="7" id="letter" class="cell">E</div>
-                        <div name="8" class="cell"></div>
-                        <div name="9" class="cell"></div>
-                        <div name="10" class="cell"></div>
-                        <div name="11" class="cell"></div>
-                        <div name="12" class="cell"></div>
-                        <div name="13" class="cell"></div>
-                        <div name="14" class="cell"></div>
-                        <div name="15" class="cell"></div>
-                    </div>
-                </div>
-
-                <div class="instrument-row">
-                    <div class="hi-hat">
-                        <div name="0" class="cell"></div>
-                        <div name="1" class="cell"></div>
-                        <div name="2" class="cell"></div>
-                        <div name="3" class="cell"></div>
-                        <div name="4" class="cell"></div>
-                        <div name="5" class="cell"></div>
-                        <div name="6" class="cell"></div>
-                        <div name="7" id="letter" class="cell">H</div>
-                        <div name="8" id="letter" class="cell">I</div>
-                        <div name="9" id="letter" class="cell">-</div>
-                        <div name="10" id="letter" class="cell">H</div>
-                        <div name="11" id="letter" class="cell">A</div>
-                        <div name="12" id="letter" class="cell">T</div>
-                        <div name="13" class="cell"></div>
-                        <div name="14" class="cell"></div>
-                        <div name="15" class="cell"></div>
-                    </div>
-                </div>
-
-                <div class="instrument-row">
-                    <div class="bass">
-                        <div name="0" class="cell"></div>
-                        <div name="1" class="cell"></div>
-                        <div name="2" class="cell"></div>
-                        <div name="3" class="cell"></div>
-                        <div name="4" class="cell"></div>
-                        <div name="5" class="cell"></div>
-                        <div name="6" class="cell"></div>
-                        <div name="7" class="cell"></div>
-                        <div name="8" class="cell"></div>
-                        <div name="9" class="cell"></div>
-                        <div name="10" class="cell"></div>
-                        <div name="11" class="cell"></div>
-                        <div name="12" id="letter" class="cell">B</div>
-                        <div name="13" id="letter" class="cell">A</div>
-                        <div name="14" id="letter" class="cell">S</div>
-                        <div name="15" id="letter" class="cell">S</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="piano-roll">
-                <div class="note C3"></div>
-                <div class="note c-sharp"></div>
-                <div class="note D3"></div>
-                <div class="note d-sharp"></div>
-                <div class="note E3"></div>
-                <div class="note F3"></div>
-                <div class="note f-sharp"></div>
-                <div class="note G3"></div>
-                <div class="note g-sharp"></div>
-                <div class="note A3"></div>
-                <div class="note a-sharp"></div>
-                <div class="note B3"></div>
-                <div class="note C4"></div>
-                <div class="note c-sharp2"></div>
-                <div class="note D4"></div>
-                <div class="note d-sharp2"></div>
-                <div class="note E4"></div>
-                <div class="note F4"></div>
-                <div class="note f-sharp2"></div>
-                <div class="note G4"></div>
-                <div class="note g-sharp2"></div>
-                <div class="note A4"></div>
-                <div class="note a-sharp2"></div>
-                <div class="note B4"></div>
-              </div>
-              
+            Press "Fabelton" to start your musical journey!
         </div>
 
-    </main>
-
-    <footer>
-
-        <div class="footer">
-            <div id="social">
-                <div id="github">
-                    <a href="https://github.com/vinicozzi/Fableton"><img id="github-logo" src="./images/github-logo.png" alt="GitHub"></a>
-                </div>
-                <!-- <div id="linkedin">
-                <a href="https://www.linkedin.com/in/"><img id="link-logo" src="linkedin.png" alt="LinkedIn"></a>
-                </div> -->
-            </div>
-            <!-- <button id="save">
-                <img id="save-button" src="/Users/kinkatse/Desktop/FabeltonV2/Fableton/assets/save-button.png">
-            </button> -->
-        </div>
-
-    </footer>
-
-</body>
-
+    
+    </div>
 </html>
