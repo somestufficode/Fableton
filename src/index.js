@@ -10,6 +10,7 @@
 import * as Tone from 'tone';
 
 // import { EQ } from 'tone';
+// include additional tone
 
 // const beatsOut = new Tone.Gain().toDestination();
 // const pianoOut = new Tone.Gain().toDestination();
